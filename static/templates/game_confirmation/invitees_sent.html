@@ -1,0 +1,41 @@
+{% extends 'home/base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+<div class="row">
+
+  <div class="col-lg-8 col-lg-offset-2 col-sm-12 col-xs-12">
+    <h1 class='text-center'>Invitations Sent:</h1>
+    <h4 class="text-center">GFS vs. {{ game.opponent }}</h4>
+    <h4 class="text-center">{{ game.date }}</h4>
+    <hr>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Date Text Sent</th>
+          <th>name</th>
+          <th>phone</th>
+          <th>game</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for player in confirms %}
+        
+        <tr>
+          <th scope="row"></th>
+          <th>{{ confirm.date_sent_id }}</th>
+          <td>{{ player.name }}</td>
+          <td>{{ player.phone_number_formatted }}</td>
+          <td>{{ game.opponent }}</td>  
+        </tr>
+        {% endfor %}
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

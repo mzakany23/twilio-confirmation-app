@@ -1,0 +1,45 @@
+{% extends 'home/base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+<div class="row">
+
+  <div class="col-lg-8 col-lg-offset-2">
+    <h1 class='text-center'>Whos attending:</h1>
+    <h4 class="text-center">GFS vs. {{ game.opponent }}</h4>
+    <h4 class="text-center">{{ game.date }}</h4>
+    <hr>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>name</th>
+          <th>phone</th>
+          <th>game</th>
+          <th>message</th>
+          <th>attending</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for confirm in confirmations %}
+        <tr>
+          <th scope="row"></th>
+          <td>{{ confirm.player.name }}</td>
+          <td>{{ confirm.player.phone_number_formatted }}</td>
+          <td>{{ game.opponent }}</td>
+          <td>{{ confirm.body }}</td>
+          {% if confirm.confirmed == True %}
+          <td><input type='checkbox' checked></td>
+          {% else %}
+          <td><input type='checkbox'></td>
+          {% endif %}
+          
+        </tr>
+        {% endfor %}
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,80 @@
+<div class="col-sm-12">
+  <form method="POST" action="{% url 'send_game_confirmation_to_selected_players' %}" >
+  {% csrf_token %}
+  <label>Game to Send Invitation to:</label>
+  <select id="gameValue" name="gameSelectBox" style="margin-top: 15px; margin-bottom: 10px; width: 200px;">
+    {% for game in games %}
+
+    <option id='gameOption' value="{{ game.id }}" >{{ game.full_game_itinerary }}</option>
+  
+    {% endfor %}
+
+  </select>
+
+  
+  <div style="margin-top: 25px;">
+    <label>Text Message to Send (<em>prefilled by default</em>):</label>
+    <textarea name="messageToSend"id="smsPlaceholder" class="form-control" rows="3" value="" placeholder=""></textarea>
+  </div>
+
+  <hr>
+  <label>Select All: <input style='float: right; margin-left: 10px;' id="selectAll" type="checkbox"></label>
+  <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Player</th>
+          <th>Phone Number</th>
+          <th>Send Invite</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for player in players %}
+        <tr>
+          <th scope="row">{{ player.id }}</th>
+          <td>{{ player.name }}</td>
+          <td>{{ player.phone_number_formatted }}</td>
+          <td>
+            <label>
+              
+              <div class="hidden-xs hidden-sm">
+                <input class='checkBoxSend' name="{{ player.id }}" type="checkbox">
+                <div style="margin-left: 10px; font-weight: 400; float: right;">Check to Send</div>
+              </div>
+              
+              <div class="hidden-lg hidden-md" style='font-size: 10px; font-weight: 600; float: right; margin-top: 5px; margin-left: 4px;'>
+                <input style="margin-left: 15px; font-size: 25px !important;" class='checkBoxSend' name="{{ player.id }}" type="checkbox">
+              </div>
+            </label>
+            
+          </td>
+        </tr>
+        {% endfor %}
+        
+      </tbody>
+    </table>
+  
+  <button type="submit" class="btn btn-danger">Send out invitations to selected players</button>
+</form>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+  
+  $(function(){
+    var currentGame = $('#gameOption').text()
+    var gamePlaceholderText = "Game this Sunday Against " + currentGame + ". Are you in? Y/N."
+    $('#smsPlaceholder').val(gamePlaceholderText);
+
+    $('#gameValue').change(function(e){
+      var changedGame = this.options[e.target.selectedIndex].text;
+      var gamePlaceholderText = "Game this Sunday Against " + changedGame + ". Are you in? Y/N."
+      $('#smsPlaceholder').val(gamePlaceholderText);
+    });
+
+    
+    
+   
+  });
+
+</script>

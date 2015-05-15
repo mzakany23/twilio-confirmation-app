@@ -1,0 +1,31 @@
+{% extends 'home/base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+<div class="row">
+
+  <div class="col-lg-8 col-lg-offset-2 col-sm-12 col-xs-12" >
+    <h1>Dashboard</h1>
+    {% include 'game_confirmation/_form.html' %}
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#selectAll').click(function(){
+		if(this.checked){
+			$('.checkBoxSend').each(function(){
+				this.checked = true;
+			});	
+		}else{
+			$('.checkBoxSend').each(function(){
+				this.checked = false;
+			});	
+		}
+		
+	});
+});
+</script>
+{% endblock %}

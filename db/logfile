@@ -1,0 +1,46 @@
+LOG:  database system was shut down at 2015-05-10 10:57:22 EDT
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+ERROR:  role "zekezeke23" does not exist
+STATEMENT:  ALTER USER zekezeke23 PASSWORD 'md51512a040aaf50c8ec62aaf3bce398c02'
+FATAL:  database "gfs" does not exist
+FATAL:  role "root" does not exist
+FATAL:  database "gfs" does not exist
+ERROR:  relation "game_confirmation_confirmmessage" already exists
+STATEMENT:  CREATE TABLE "game_confirmation_confirmmessage" ("id" serial NOT NULL PRIMARY KEY, "recipient" varchar(40) NOT NULL, "body" varchar(40) NOT NULL, "confirmed" boolean NOT NULL)
+ERROR:  relation "game_confirmation_confirmmessage" already exists
+STATEMENT:  CREATE TABLE "game_confirmation_confirmmessage" ("id" serial NOT NULL PRIMARY KEY, "recipient" varchar(40) NOT NULL, "body" varchar(40) NOT NULL, "confirmed" boolean NOT NULL)
+ERROR:  column "spclocation" does not exist at character 32
+STATEMENT:  SELECT oid, spcname, spcowner, spclocation, spcacl, shobj_description(oid, 'pg_tablespace') AS comment FROM pg_tablespace
+ERROR:  cannot drop table game_confirmation_game because other objects depend on it
+DETAIL:  constraint game_conf_game_id_12a059ba709baf5a_fk_game_confirmation_game_id on table game_confirmation_gameconfirmation depends on table game_confirmation_game
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  drop table "public"."game_confirmation_game"
+ERROR:  relation "game_confirmation_gameconfirmation" does not exist at character 13
+STATEMENT:  INSERT INTO "game_confirmation_gameconfirmation" ("date_sent_id", "game_id") VALUES ('2015-05-11'::date, 1) RETURNING "game_confirmation_gameconfirmation"."id"
+ERROR:  relation "game_confirmation_gameconfirmation" does not exist at character 156
+STATEMENT:  SELECT "game_confirmation_gameconfirmation"."id", "game_confirmation_gameconfirmation"."date_sent_id", "game_confirmation_gameconfirmation"."game_id" FROM "game_confirmation_gameconfirmation" LIMIT 21
+ERROR:  relation "game_confirmation_gameconfirmation" does not exist at character 13
+STATEMENT:  INSERT INTO "game_confirmation_gameconfirmation" ("date_sent_id", "game_id") VALUES ('2015-05-11'::date, 1) RETURNING "game_confirmation_gameconfirmation"."id"
+ERROR:  relation "game_confirmation_gameconfirmation" does not exist at character 156
+STATEMENT:  SELECT "game_confirmation_gameconfirmation"."id", "game_confirmation_gameconfirmation"."date_sent_id", "game_confirmation_gameconfirmation"."game_id" FROM "game_confirmation_gameconfirmation" LIMIT 21
+ERROR:  relation "game_confirmation_gameconfirmation" does not exist at character 13
+STATEMENT:  INSERT INTO "game_confirmation_gameconfirmation" ("date_sent_id", "game_id") VALUES ('2015-05-11'::date, 1) RETURNING "game_confirmation_gameconfirmation"."id"
+ERROR:  relation "game_confirmation_gameconfirmation" does not exist at character 156
+STATEMENT:  SELECT "game_confirmation_gameconfirmation"."id", "game_confirmation_gameconfirmation"."date_sent_id", "game_confirmation_gameconfirmation"."game_id" FROM "game_confirmation_gameconfirmation" LIMIT 21
+ERROR:  relation "game_confirmation_gameconfirmation" does not exist at character 37
+STATEMENT:  SELECT COUNT('*') AS "__count" FROM "game_confirmation_gameconfirmation"
+ERROR:  relation "game_confirmation_gameconfirmation" does not exist at character 156
+STATEMENT:  SELECT "game_confirmation_gameconfirmation"."id", "game_confirmation_gameconfirmation"."date_sent_id", "game_confirmation_gameconfirmation"."game_id" FROM "game_confirmation_gameconfirmation" ORDER BY "game_confirmation_gameconfirmation"."id" DESC LIMIT 21
+ERROR:  relation "game_confirmation_game" does not exist at character 37
+STATEMENT:  SELECT COUNT('*') AS "__count" FROM "game_confirmation_game"
+ERROR:  relation "game_confirmation_game" does not exist at character 301
+STATEMENT:  SELECT "game_confirmation_game"."id", "game_confirmation_game"."date", "game_confirmation_game"."time", "game_confirmation_game"."opponent", "game_confirmation_game"."field_address", "game_confirmation_game"."city", "game_confirmation_game"."zip_code", "game_confirmation_game"."attendee_total" FROM "game_confirmation_game" ORDER BY "game_confirmation_game"."id" DESC LIMIT 21
+ERROR:  relation "game_confirmation_player" does not exist at character 37
+STATEMENT:  SELECT COUNT('*') AS "__count" FROM "game_confirmation_player"
+ERROR:  relation "game_confirmation_player" does not exist at character 123
+STATEMENT:  SELECT "game_confirmation_player"."id", "game_confirmation_player"."name", "game_confirmation_player"."phone_number" FROM "game_confirmation_player" ORDER BY "game_confirmation_player"."id" DESC LIMIT 21
+ERROR:  column "spclocation" does not exist at character 32
+STATEMENT:  SELECT oid, spcname, spcowner, spclocation, spcacl, shobj_description(oid, 'pg_tablespace') AS comment FROM pg_tablespace
+ERROR:  column "spclocation" does not exist at character 32
+STATEMENT:  SELECT oid, spcname, spcowner, spclocation, spcacl, shobj_description(oid, 'pg_tablespace') AS comment FROM pg_tablespace

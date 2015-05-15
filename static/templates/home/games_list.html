@@ -1,0 +1,36 @@
+{% extends 'home/base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+<div class="row">
+
+  <div class="col-lg-8 col-lg-offset-2">
+    <h1 class='text-center'>Akron GFS II:</h1>
+    <h2 class='text-center'>Game Schedule</h2>
+    <hr>
+    <table style="margin-top: 20px;" class="table table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Opponent</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for game in all_games %}
+        <tr>
+          <th scope="row"></th>
+          <td>{{ game.date }}</td>
+          <td>{{ game.time_afternoon }}</td>
+          <td>{{ game.opponent }}</td>
+          <td>{{ game.full_address }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
