@@ -8,6 +8,7 @@
   <div class="col-lg-8 col-lg-offset-2 col-sm-12 col-xs-12">
     <h1 class='text-center'>Confirmations:</h1>
 
+
     <table class="table table-striped">
       <thead>
         <tr>
@@ -16,7 +17,7 @@
           <th>Date of Game</th>
           <th>Whos Showing up</th>
           <th>Invites Sent</th>
-          <th>Invites Responded</th>
+          <th class='hidden-sm hidden-xs'>Invites Responded</th>
           <th class='hidden-sm hidden-xs'>Update</th>
         </tr>
       </thead>
@@ -32,7 +33,7 @@
           <td class='hidden-sm hidden-xs'>{{ confirm.game.date }}</td>
           <td class='text-center'><a href="{% url 'players_attending_show' confirm.game.id %}">{{ confirm.game.attendee_total }}</a></td>
           <td class='text-center' ><a href="{% url 'invitees_sent' confirm.game.id %}">{{ confirm.players.count }}</a></td>
-          <td class='text-center'><a href="{% url 'players_attending_show' confirm.game.id %}">{{ confirm.game.attendee_total }}</a></td>   
+          <td class='text-center hidden-xs hidden-sm'><a href="{% url 'players_attending_show' confirm.game.id %}">{{ confirm.game.attendee_total }}</a></td>   
           <td class='hidden-sm hidden-xs'><a href="{% url 'confirmation_list' confirm.game.id %}" class="btn btn-danger">Refresh Totals</a></td>
         </tr>
         <tr>

@@ -25,6 +25,7 @@ def get_home_variables(request):
 		next_sundays_game = Game.objects.get(date=date)
 	except:
 		confirmed = 0
+		next_sundays_game = None
 	
 	try:
 		confirms = GameConfirmation.objects.all().order_by('game__date')

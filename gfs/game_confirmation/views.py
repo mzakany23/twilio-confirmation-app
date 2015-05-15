@@ -81,8 +81,8 @@ def confirmation_show(request):
 	context = {}
 	return render(request,template,context,context_instance=RequestContext(request, processors=[get_home_variables]))
 
-# refresh
-# need to refresh confirm list
+
+# refresh confirm list
 @login_required(login_url='/account/login')
 def confirmation_list(request,id):
 	
