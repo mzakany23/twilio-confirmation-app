@@ -34,4 +34,3 @@ class GeoCode:
 		return requests.post(full_url,headers=headers,data=json.dumps(data)).json()['id']
 	
 		
-	
