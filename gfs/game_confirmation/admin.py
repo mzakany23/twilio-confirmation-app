@@ -7,6 +7,8 @@ class PlayerAdmin(admin.ModelAdmin):
 		model = Player
 
 class GameAdmin(admin.ModelAdmin):
+	fields = ['date','time','opponent','field_address','city','zip_code','attendee_total']
+	list_display = ['date','opponent','field_location_url']
 	class Meta:
 		model = Game
 

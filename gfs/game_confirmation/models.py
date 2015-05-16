@@ -2,6 +2,7 @@ from django.db import models
 from gfs.twilio_util import TwilioMessages
 from django.db.models.signals import post_save
 import datetime
+from gfs.google_api import GeoCode
 import re
 
 '''
@@ -42,6 +43,7 @@ class Game(models.Model):
 	city = models.CharField(max_length=40)
 	zip_code = models.IntegerField(default=0)
 	attendee_total = models.IntegerField(default=0)
+	field_location_url = models.CharField(max_length=40,blank=True,null=True)
 
 	def __unicode__(self):
 		return str(self.opponent) 
@@ -58,7 +60,7 @@ class Game(models.Model):
 		return str(self.opponent) + " " + str(self.date)
 
 	def full_game_itinerary(self):
-		return str(self.opponent).upper() + ": " + str(self.date) + " " + str(self.time_afternoon()) + ". Address: " + str(self.full_address())
+		return str(self.opponent).upper() + ": " + str(self.date) + " " + str(self.time_afternoon()) + ". Address: " + str(self.full_address()) + " Location-url: " + str(self.field_location_url)
 
 
 class ConfirmMessage(models.Model):
@@ -149,9 +151,16 @@ class GameConfirmation(models.Model):
 				confirm.save()
 			
 
+def create_field_address_short_url(sender,instance,created,*args,**kwargs):
+	if created:
+		geocode = GeoCode(str(instance.field_address),str(instance.city),str(instance.zip_code))
+		short_url = str(geocode.get_google_map_short_url())
+		instance.field_location_url = short_url
+		instance.save()
 
-				
-				
+post_save.connect(create_field_address_short_url,sender=Game)
+
+
 		
 
 
