@@ -1,12 +1,9 @@
 from twilio.rest import TwilioRestClient
 import datetime
+from twilio_api_keys import TWILIO
 
 # c45b2d6230c15201daf02fb9f439796a
 
-TWILIO = {
-	'sid' : 'AC609959e07eae76395e0dd2938da98aaf',
-	'token' : '5c7f82b729f6388d0b3f9a26da8e8970'
-}
 
 
 '''
