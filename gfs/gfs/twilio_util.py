@@ -3,8 +3,8 @@ import datetime
 
 
 TWILIO = {
-	'sid' : 'AC609959e07eae76395e0dd2938da98aaf',
-	'token' : 'c45b2d6230c15201daf02fb9f439796a'
+	'sid' : '',
+	'token' : ''
 }
 
 
