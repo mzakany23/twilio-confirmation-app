@@ -6,9 +6,21 @@
 <div class="row" style='width: 100%'>
 
   <div class="col-lg-8 col-lg-offset-2 col-sm-12 col-xs-12" >
+
     <h1 style="margin-left: 15px;">Dashboard</h1>
-    {% include 'game_confirmation/_form.html' %}
+    {% if next_sundays_game != None %}
+    	{% include 'game_confirmation/_form.html' %}
+    {% else %}
+  		<div class="row">
+  			<div class="col-lg-12">
+  				<div class="jumbotron">
+					  <h4 style='padding: 10px;'>Add some games to to send confirms!</h4>
+					</div>
+  			</div>
+  		</div>
+  	{% endif %}
   </div>
+  
 </div>
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>

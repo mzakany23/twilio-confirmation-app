@@ -44,3 +44,24 @@ ERROR:  column "spclocation" does not exist at character 32
 STATEMENT:  SELECT oid, spcname, spcowner, spclocation, spcacl, shobj_description(oid, 'pg_tablespace') AS comment FROM pg_tablespace
 ERROR:  column "spclocation" does not exist at character 32
 STATEMENT:  SELECT oid, spcname, spcowner, spclocation, spcacl, shobj_description(oid, 'pg_tablespace') AS comment FROM pg_tablespace
+FATAL:  database "mzakany" does not exist
+ERROR:  database "angular" already exists
+STATEMENT:  CREATE DATABASE angular;
+	
+ERROR:  role "mzakany" already exists
+STATEMENT:  CREATE ROLE mzakany PASSWORD 'md53bdf1b57921eee157865138de093179f' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;
+	
+FATAL:  database "mzakany" does not exist
+ERROR:  syntax error at or near "gfs" at character 1
+STATEMENT:  gfs
+	gfs;
+ERROR:  database "angular" does not exist
+STATEMENT:  DROP DATABASE angular;
+	
+FATAL:  database "angular" does not exist
+ERROR:  database "angular" does not exist
+STATEMENT:  DROP DATABASE angular;
+	
+ERROR:  database "angular" does not exist
+STATEMENT:  DROP DATABASE angular;
+	

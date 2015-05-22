@@ -48,12 +48,21 @@ def send_game_confirmation_to_selected_players(request):
 			messages.error(request, "Nobody selected! At least need one person to send text to.")
 			return HttpResponseRedirect(reverse('send_game_confirmation_to_selected_players'))
 		else:
-			message = mutable_post['messageToSend']
-			game = mutable_post['gameSelectBox']
+			message = mutable_post['messageToSend'] 
+			there_are_games_to_show = False
+			try:
+				game = mutable_post['gameSelectBox'] 
+				there_are_games_to_show = True
+			except:
+				game = None
+
 			game_invite = GameConfirmation()
-			game_invite.game = Game.objects.get(id=game)
-			game_invite.invitations_sent = len(list_to_send_to)
-			game_invite.save()
+
+			if there_are_games_to_show:	
+				game_invite.game = Game.objects.get(id=game)
+				game_invite.invitations_sent = len(list_to_send_to)
+				game_invite.save()
+
 			game_invite.invite_players(list_to_send_to,message)
 			messages.success(request, "Message Sent!")
 			return HttpResponseRedirect(reverse('confirmation_show'))
