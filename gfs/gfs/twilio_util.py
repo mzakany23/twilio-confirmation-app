@@ -2,8 +2,6 @@ from twilio.rest import TwilioRestClient
 import datetime
 from twilio_api_keys import TWILIO
 
-# c45b2d6230c15201daf02fb9f439796a
-
 
 
 '''
