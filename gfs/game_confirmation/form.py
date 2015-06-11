@@ -1,4 +1,8 @@
 from django import forms
+from django.forms import ModelForm
+from models import Game
+
+
 
 class LoginForm(forms.Form):
 	username = forms.CharField(widget=forms.TextInput(attrs={
@@ -18,3 +22,36 @@ class LoginForm(forms.Form):
 		"placeholder" : "Password",
 		"type" : "password",
 	}))
+
+
+class GameForm(ModelForm):
+	class Meta:
+		model = Game
+		fields = '__all__'
+		exclude = ['attendee_total','field_location_url']
+
+		widgets = { 
+			'date': forms.TextInput(attrs={
+				"class" : "form-control",
+				'id' : 'datepicker'
+			}),
+			'time': forms.TextInput(attrs={
+				"class" : "form-control",
+				'id' : 'timepicker',
+				'value' : '3:00'
+			}),
+			'field_address': forms.TextInput(attrs={
+				"class" : "form-control",
+			}),
+			'opponent': forms.TextInput(attrs={
+				"class" : "form-control",
+			}),
+			'city': forms.TextInput(attrs={
+				"class" : "form-control",
+			}),
+			'zip_code': forms.NumberInput(attrs={
+				"class" : "form-control",
+			}),
+			
+    } 
+

@@ -9,7 +9,7 @@ from twilio_api_keys import TWILIO
 '''
 class TwilioMessages:
 	def __init__(self,filter_date=None):
-		self.client = TwilioRestClient(TWILIO['sid'], TWILIO['token'])
+		self.client = TwilioRestClient(TWILIO['AccountSID'], TWILIO['AuthToken'])
 		self.sid = TWILIO['sid']
 		self.token = TWILIO['token']
 		self.filterd_date = filter_date

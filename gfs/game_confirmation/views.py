@@ -4,7 +4,7 @@ from models import GameConfirmation, ConfirmMessage, Player, Game
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User,AnonymousUser
-from form import LoginForm
+from form import LoginForm, GameForm
 from home.views import get_home_variables
 from django.template import RequestContext
 from django.contrib import messages
@@ -145,7 +145,19 @@ def invitees_sent(request,id):
 	context = {'confirms' : confirms ,'game' : game, 'confirm' : confirm}
 	return render(request,template,context,context_instance=RequestContext(request, processors=[get_home_variables]))	
 
+@login_required(login_url='/account/login')
+def add_game(request):
 
+	form = GameForm(request.POST or None)
+
+	if form.is_valid():
+		form.save()
+		messages.success(request, 'Game added.')
+		return HttpResponseRedirect(reverse('home'))
+	
+	template = "game_confirmation/_add_game_form.html"
+	context = {'form' : form}
+	return render(request,template,context,context_instance=RequestContext(request, processors=[get_home_variables]))	
 
 
 

@@ -19,6 +19,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         {% if user.is_superuser %}
+        <li><a href="{% url 'add_game' %}"><button class="btn btn-danger">Add Game</button></a></li>
         <li><a href="{% url 'confirmation_show' %}">Confirmations for {{ next_sundays_game }}<span style='margin-left: 5px;' class="badge">{{ confirmed.attendee_total }}</span></a></li>
         <li><a href="{% url 'home' %}">Schedule</a></li>
         <li><a href="{% url 'send_game_confirmation_to_selected_players' %}">Dashboard</a></li>

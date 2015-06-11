@@ -21,5 +21,6 @@ urlpatterns += patterns('game_confirmation.views',
 	url(r'^logout/$','auth_logout',name='auth_logout'),
 	url(r'^games/invitees_sent/(?P<id>\d+)$', 'invitees_sent',name='invitees_sent'),
 	url(r'^games/players_attending/(?P<id>\d+)$', 'players_attending_show',name='players_attending_show'),
+	url(r'^games/add/$', 'add_game',name='add_game'),
 )
 
