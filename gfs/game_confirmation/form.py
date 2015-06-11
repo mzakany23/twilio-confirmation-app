@@ -42,15 +42,18 @@ class GameForm(ModelForm):
 			}),
 			'field_address': forms.TextInput(attrs={
 				"class" : "form-control",
+				'id' : 'fieldAddress' 
 			}),
 			'opponent': forms.TextInput(attrs={
 				"class" : "form-control",
 			}),
 			'city': forms.TextInput(attrs={
 				"class" : "form-control",
+				'id' : 'city'
 			}),
 			'zip_code': forms.NumberInput(attrs={
 				"class" : "form-control",
+				'id' : 'zip'
 			}),
 			
     } 

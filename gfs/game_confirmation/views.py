@@ -149,14 +149,20 @@ def invitees_sent(request,id):
 def add_game(request):
 
 	form = GameForm(request.POST or None)
+	home = {
+		'address' : '3871 Ranfield Rd',
+		'city' : 'Kent',
+		'zip' : '44240',
+		'name' : 'Akron Gfs II'
+	}
 
 	if form.is_valid():
 		form.save()
 		messages.success(request, 'Game added.')
 		return HttpResponseRedirect(reverse('home'))
-	
+
 	template = "game_confirmation/_add_game_form.html"
-	context = {'form' : form}
+	context = {'form' : form, 'home' : home}
 	return render(request,template,context,context_instance=RequestContext(request, processors=[get_home_variables]))	
 
 
